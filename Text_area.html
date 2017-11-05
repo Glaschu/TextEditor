@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://use.fontawesome.com/7564c92c65.js"></script>
+  <script src="Code.js"></script>
+  <title>Rich Text Editor</title>
+  <style>
+
+  </style>
+</head>
+<body onload="enableEditMode();">
+  <div id ="textEditor">
+    <div id ="theRibbon">
+      <button id="boldButton" onclick="execCmd('Bold');" ><i class="fa fa-bold" aria-hidden="true"></i></button>
+      <button id="italicButton" onclick="execCmd('Italic');" ><i class="fa fa-italic" aria-hidden="true"></i></button>
+      <button id="underlineButton" onclick="execCmd('Underline');" ><i class="fa fa-underline" aria-hidden="true"></i></button>
+      <button id="strikethroughButton" onclick="execCmd('Strikethrough');" ><i class="fa fa-strikethrough" aria-hidden="true"></i></button>
+      <button id="align-leftButton" onclick="execCmd('justifyLeft');" ><i class="fa fa-align-left" aria-hidden="true"></i></button>
+      <button id="align-centerButton" onclick="execCmd('justifyCenter');" ><i class="fa fa-align-center" aria-hidden="true"></i></button>
+      <button id="align-rightButton" onclick="execCmd('justifyRight');" ><i class="fa fa-align-right" aria-hidden="true"></i></button>
+      <button id="align-justifyButton" onclick="execCmd('justifyFull');" ><i class="fa fa-align-justify" aria-hidden="true"></i></button>
+      <button id="cutButton" onclick="execCmd('cut');" ><i class="fa fa-cut" aria-hidden="true"></i></button>
+      <button id="copyButton" onclick="execCmd('copy');" ><i class="fa fa-copy" aria-hidden="true"></i></button>
+      <button id="indentButton" onclick="execCmd('indent');" ><i class="fa fa-indent" aria-hidden="true"></i></button>
+      <button id="dedentButton" onclick="execCmd('outdent');" ><i class="fa fa-dedent" aria-hidden="true"></i></button>
+      <button id="subscriptButton" onclick="execCmd('subscript');" ><i class="fa fa-subscript" aria-hidden="true"></i></button>
+      <button id="superscriptButton" onclick="execCmd('superscript');" ><i class="fa fa-superscript" aria-hidden="true"></i></button>
+      <button id="undoButton" onclick="execCmd('undo');" ><i class="fa fa-undo" aria-hidden="true"></i></button>
+      <button id="repeatButton" onclick="execCmd('redo');" ><i class="fa fa-repeat" aria-hidden="true"></i></button>
+      <button id="list-ulButton" onclick="execCmd('insertUnorderedList');" ><i class="fa fa-list-ul" aria-hidden="true"></i></button>
+      <button id="list-olButton" onclick="execCmd('insertOrderedList');" ><i class="fa fa-list-ol" aria-hidden="true"></i></button>
+      <button id="paragraphButton" onclick="execCmd('insertParagraph');" ><i class="fa fa-paragraph" aria-hidden="true"></i></button>
+      <select onchange="execCommandWithArg('formatBlock',this.value);">
+        <option value="H1">H1</option>
+        <option value="H2">H2</option>
+        <option value="H3">H3</option>
+        <option value="H4">H4</option>
+        <option value="H5">H5</option>
+        <option value="H6">H6</option>
+      </select>
+      <button id="HRButton" onclick="execCmd('insertHorizontalRule');" >HR</button>
+      <button id="linkButton" onclick="execCommandWithArg('createLink',prompt('Enter a Url','http://'));" ><i class="fa fa-link" aria-hidden="true"></i></button>
+      <button id="unlinkButton" onclick="execCmd('unlink');" ><i class="fa fa-unlink" aria-hidden="true"></i></button>
+      <button id="codeButton" onclick="toggleSource();" ><i class="fa fa-code" aria-hidden="true"></i></button>
+      <button id="toggleEditButton" onclick="toggleEdit();" >toggle edit</i></button>
+      <select onchange="execCommandWithArg('fontName',this.value);">
+        <option value="Arial">Arial</option>
+        <option value="Comic Sans MS">Comic Sans MS</option>
+        <option value="Courier">Courier</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Tahoma">Tahoma</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Verdana">Verdana</option>
+      </select>
+      <select onchange="execCommandWithArg('fontSize',this.value);">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+      </select>
+      Fore Color:<input type="color" onchange="execCommandWithArg('foreColor',this.value);"/>
+      Background:<input type="color" onchange="execCommandWithArg('hiliteColor',this.value);"/>
+      <button id="imageButton" onclick="execCommandWithArg('insertImage',prompt('Enter a image Url','http://'));" ><i class="fa fa-file-image-o" aria-hidden="true"></i></button>
+      <button id="selectButton" onclick="execCmd('selectAll');">Select all</button>
+    </div>
+  </div>
+    <iframe id="richTextField" name="richTextField" frameborder="0" style="width:1000px;height 500px;"></iframe>
+</body>
+</html>
